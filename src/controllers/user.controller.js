@@ -1,8 +1,8 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import {ApiError} from "../utils/ApiError.js"
+import ApiError from "../utils/ApiError.js"
 import { User} from "../models/user.model.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
-import { ApiResponse } from "../utils/ApiResponse.js";
+import ApiResponse from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 
 const generateAccessAndRefereshTokens = async (userId) => {
@@ -73,8 +73,6 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
     const { email, username, password } = req.body
-    console.log(email);
-
     if (!username && !email) {
         throw new ApiError(400, "username or email is required")
     }
